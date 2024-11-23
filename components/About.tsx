@@ -30,6 +30,7 @@ const skills = [
   { name: 'MongoDB', icon: SiMongodb },
   { name: 'Git', icon: FaGitAlt },
   { name: 'Python', icon: FaPython },
+
   { name: 'SQL', icon: TbSql },
   { name: 'Postman', icon: SiPostman },
   { name: 'Bootstrap', icon: FaBootstrap },
@@ -68,7 +69,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <Card key={skill.name}>
               <CardContent className="flex flex-col items-center justify-center p-4">
                 <skill.icon className="text-3xl mb-2 text-primary" />

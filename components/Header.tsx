@@ -2,15 +2,24 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
+
+interface HeaderProps {
+  activeSection: string;
+  scrollToSection: (sectionId: string) => void;
+}
 
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Qualifications', href: '#qualifications' },
-  { name: 'Internships', href: '#internships' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -18,10 +27,7 @@ const navItems = [
 export default function Header({
   activeSection,
   scrollToSection,
-}: {
-  activeSection: string;
-  scrollToSection: (sectionId: string) => void;
-}) {
+}: HeaderProps) {
   return (
     <motion.header
       className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b"
@@ -69,23 +75,18 @@ export default function Header({
           <SheetContent>
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => {
-                    scrollToSection(item.name.toLowerCase());
-                    // Close the sheet after clicking
-                    document
-                      .querySelector('[data-radix-collection-item]')
-                      ?.click();
-                  }}
-                  className={`text-sm ${
-                    activeSection === item.name.toLowerCase()
-                      ? 'text-primary font-semibold'
-                      : 'text-muted-foreground hover:text-primary'
-                  }`}
-                >
-                  {item.name}
-                </button>
+                <SheetClose asChild key={item.name}>
+                  <button
+                    onClick={() => scrollToSection(item.name.toLowerCase())}
+                    className={`text-sm ${
+                      activeSection === item.name.toLowerCase()
+                        ? 'text-primary font-semibold'
+                        : 'text-muted-foreground hover:text-primary'
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                </SheetClose>
               ))}
             </nav>
           </SheetContent>

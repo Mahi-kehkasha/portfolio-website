@@ -1,13 +1,21 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const socialLinks = [
   { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Mahi-kehkasha' },
-  { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/maheen-kehkasha-68b658224/' },
-  { name: 'Twitter', icon: FaTwitter, url: 'https://twitter.com/yourtwitterhandle' },
-]
+  {
+    name: 'LinkedIn',
+    icon: FaLinkedin,
+    url: 'https://www.linkedin.com/in/maheen-kehkasha-68b658224/',
+  },
+  {
+    name: 'Twitter',
+    icon: FaTwitter,
+    url: 'https://twitter.com/yourtwitterhandle',
+  },
+];
 
 export default function SocialMedia() {
   return (
@@ -27,7 +35,7 @@ export default function SocialMedia() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {socialLinks.map((link, index) => (
+          {socialLinks.map((link) => (
             <motion.a
               key={link.name}
               href={link.url}
@@ -44,6 +52,5 @@ export default function SocialMedia() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

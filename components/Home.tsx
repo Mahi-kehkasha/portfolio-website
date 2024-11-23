@@ -1,11 +1,14 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { TypeAnimation } from 'react-type-animation'
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Home() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center"
+    >
       <div className="text-center">
         <motion.h1
           className="text-4xl md:text-6xl font-bold mb-4 text-white"
@@ -13,7 +16,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Hi, I'm Maheen Kehkasha
+          Hi, I&apos;m Maheen Kehkasha
         </motion.h1>
         <motion.h2
           className="text-2xl md:text-3xl mb-8 text-cyan-400"
@@ -56,6 +59,5 @@ export default function Home() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

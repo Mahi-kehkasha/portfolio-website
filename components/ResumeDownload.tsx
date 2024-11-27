@@ -11,7 +11,7 @@ export default function ResumeDownload() {
     setIsDownloading(true);
     try {
       // The resume should be in the public folder
-      const resumeUrl = '/Maheen kehkasha-r.pdf'; // Reference the file directly from the public folder
+      const resumeUrl = '/Maheen-Kehkasha-.pdf'; // Correct file path
 
       // Fetch the file
       const response = await fetch(resumeUrl);

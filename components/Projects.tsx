@@ -69,6 +69,19 @@ const projects = [
     link: 'https://github.com/Mahi-kehkasha/NLP-20Newsgroup.git',
   },
   {
+    title: 'AI Chatbot',
+    description:
+      'Developed an interactive AI-powered chatbot with real-time responses.',
+    technologies: ['React.js', 'Node.js', 'Express.js'],
+    details: [
+      'Implemented secure authentication and a responsive UI for enhanced user experience.',
+      'Integrated REST API for seamless communication between the frontend and backend.',
+      'Deployed the application on Netlify for frontend and Render for backend hosting.',
+    ],
+    link: 'https://lucky-pegasus-e54bd8.netlify.app/login',
+    repo: 'https://github.com/Mahi-kehkasha/chatbot.git',
+  },
+  {
     title: 'Personal Portfolio Website',
     description:
       'Developed a responsive portfolio website to showcase projects and skills, with a professional and interactive design.',
@@ -78,7 +91,7 @@ const projects = [
       'Designed a dynamic navigation bar with separate header and footer components.',
       'Incorporated animations and AI-themed elements for visual appeal.',
       'Ensured a fully responsive design optimized for all devices.',
-      'Added sections for About, Qualifications, Projects,Internship, Resume Download, and Social Media links.',
+      'Added sections for About, Qualifications, Projects, Internship, Resume Download, and Social Media links.',
     ],
     link: ' ',
   },

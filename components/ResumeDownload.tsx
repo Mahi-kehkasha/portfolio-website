@@ -11,7 +11,8 @@ export default function ResumeDownload() {
     setIsDownloading(true);
     try {
       // Ensure the file is inside the 'public' folder
-      const resumeUrl = '/Maheen Kehkasha.pdf'; // No need for full path
+      const resumeUrl = '/Maheen-Kehkasha-updated.pdf';
+      // No need for full path
 
       // Create a temporary <a> element to trigger the download
       const link = document.createElement('a');

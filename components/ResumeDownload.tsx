@@ -7,45 +7,23 @@ import { useState } from 'react';
 export default function ResumeDownload() {
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     setIsDownloading(true);
     try {
-      // The resume should be in the public folder
-      const resumeUrl = '/Maheen-Kehkasha-.pdf'; // Correct file path
+      // Ensure the file is inside the 'public' folder
+      const resumeUrl = '/Maheen-Kehkasha-updated.pdf';
+      // No need for full path
 
-      // Fetch the file
-      const response = await fetch(resumeUrl);
-
-      if (!response.ok) {
-        throw new Error('Failed to download the resume');
-      }
-
-      // Ensure it's a PDF
-      if (response.headers.get('Content-Type') !== 'application/pdf') {
-        throw new Error('The file is not a PDF');
-      }
-
-      // Get the blob from the response
-      const blob = await response.blob();
-
-      // Create a temporary URL for the blob
-      const url = window.URL.createObjectURL(blob);
-
-      // Create a temporary anchor element
+      // Create a temporary <a> element to trigger the download
       const link = document.createElement('a');
-      link.href = url;
+      link.href = resumeUrl;
       link.download = 'Maheen_Kehkasha_Resume.pdf';
-
-      // Append to the body, click, and remove
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      // Release the temporary URL
-      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading resume:', error);
-      alert('Failed to download the resume. Please try again later.');
+      alert('Failed to download the resume. Please try again.');
     } finally {
       setIsDownloading(false);
     }

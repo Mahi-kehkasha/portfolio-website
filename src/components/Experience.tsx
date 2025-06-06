@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import { FaCode, FaGraduationCap, FaLaptopCode, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGraduationCap, FaLaptopCode, FaExternalLinkAlt } from 'react-icons/fa';
+import { Experience as ExperienceType, ContainerVariants, ItemVariants } from '../types';
 
 const Experience = () => {
-  const experiences = [
+  const experiences: ExperienceType[] = [
     {
       title: 'MERN Stack Trainer',
       company: 'Skillcave',
@@ -51,7 +52,7 @@ const Experience = () => {
     }
   ];
 
-  const containerVariants = {
+  const containerVariants: ContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -61,7 +62,7 @@ const Experience = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: ItemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -166,7 +167,7 @@ const Experience = () => {
                     </div>
                   ))}
                 </div>
-              ) : (
+              ) : experience.responsibilities ? (
                 <ul className="space-y-3">
                   {experience.responsibilities.map((responsibility, respIndex) => (
                     <li key={respIndex} className="flex items-start gap-3">
@@ -175,7 +176,7 @@ const Experience = () => {
                     </li>
                   ))}
                 </ul>
-              )}
+              ) : null}
             </motion.div>
           ))}
         </motion.div>

@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { FaCode, FaServer, FaDatabase, FaTools, FaUsers, FaDownload, FaEnvelope } from 'react-icons/fa';
+import { Skill, ContainerVariants, ItemVariants } from '../types';
 
 const About = () => {
-  const skills = [
+  const skills: Skill[] = [
     {
       category: 'Programming Languages',
       icon: FaCode,
@@ -30,7 +31,7 @@ const About = () => {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: ContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -40,7 +41,7 @@ const About = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: ItemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -127,7 +128,7 @@ const About = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <motion.div
               key={skill.category}
               variants={itemVariants}

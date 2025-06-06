@@ -1,6 +1,46 @@
-# Portfolio Website
+# Maheen Kehkasha - Portfolio Website
 
-A modern, animated portfolio website built with React, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
+
+## Deployment Information
+
+- **Site URL**: https://maheencodes.netlify.app
+- **Team**: Maheen Kehkasha
+- **Project Name**: Maheencodes
+- **Branch**: master
+
+## Build Settings
+
+- **Build Command**: `npm run build`
+- **Publish Directory**: `dist`
+- **Base Directory**: `.`
+- **Functions Directory**: `netlify/functions`
+
+## Local Development
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## Technologies Used
+
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vite
+- Netlify
 
 ## Features
 
@@ -46,16 +86,6 @@ yarn dev
 ```
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-## Building for Production
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-The build files will be in the `dist` directory.
 
 ## Customization
 

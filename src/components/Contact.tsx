@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 interface FormErrors {
   name?: string;
   email?: string;
   subject?: string;
   message?: string;
+}
+
+interface EmailConfig {
+  serviceId: string;
+  templateId: string;
+  publicKey: string;
 }
 
 const Contact = () => {
@@ -19,6 +26,47 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [isConfigValid, setIsConfigValid] = useState<boolean>(false);
+
+  // EmailJS configuration
+  const emailConfig: EmailConfig = {
+    serviceId: 'service_vz3edfr',
+    templateId: 'template_vc2x2ox',
+    publicKey: '-fWccDgcuu--IiJpO',
+  };
+
+  // Test EmailJS configuration on component mount
+  useEffect(() => {
+    const testEmailConfig = async () => {
+      try {
+        // Initialize EmailJS
+        emailjs.init(emailConfig.publicKey);
+        
+        // Test the configuration
+        const testResult = await emailjs.send(
+          emailConfig.serviceId,
+          emailConfig.templateId,
+          {
+            from_name: 'Test User',
+            from_email: 'test@example.com',
+            subject: 'Test Email',
+            message: 'This is a test email to verify EmailJS configuration.',
+            to_name: 'Maheen Kehkasha',
+          }
+        );
+        
+        console.log('EmailJS configuration is valid:', testResult);
+        setIsConfigValid(true);
+      } catch (error) {
+        console.error('EmailJS configuration error:', error);
+        setIsConfigValid(false);
+        setErrorMessage('Email service is not properly configured. Please contact the administrator.');
+      }
+    };
+
+    testEmailConfig();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -66,18 +114,59 @@ const Contact = () => {
       return;
     }
 
+    if (!isConfigValid) {
+      setSubmitStatus('error');
+      setErrorMessage('Email service is not properly configured. Please try again later.');
+      return;
+    }
+
     setIsSubmitting(true);
+    setErrorMessage('');
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const result = await emailjs.send(
+        emailConfig.serviceId,
+        emailConfig.templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Maheen Kehkasha',
+        }
+      );
+
+      console.log('Email sent successfully:', result);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
+      
+      // Provide more detailed error messages
+      if (error.text) {
+        switch (error.text) {
+          case 'Invalid template ID':
+            setErrorMessage('Email template is not properly configured. Please contact the administrator.');
+            break;
+          case 'Invalid service ID':
+            setErrorMessage('Email service is not properly configured. Please contact the administrator.');
+            break;
+          case 'Invalid user ID':
+            setErrorMessage('Email service authentication failed. Please contact the administrator.');
+            break;
+          default:
+            setErrorMessage('Failed to send message. Please try again later.');
+        }
+      } else {
+        setErrorMessage('Failed to send message. Please try again later.');
+      }
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(null), 3000);
+      setTimeout(() => {
+        setSubmitStatus(null);
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
@@ -109,6 +198,12 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Get in Touch</h2>
           <p className="text-muted text-lg">Let's discuss your next project</p>
         </div>
+
+        {!isConfigValid && (
+          <div className="mb-8 p-4 rounded-lg glass-effect border border-red-500 text-white">
+            <p className="text-center">{errorMessage}</p>
+          </div>
+        )}
 
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-8">

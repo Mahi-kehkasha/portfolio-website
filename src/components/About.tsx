@@ -83,7 +83,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 cyber-glow">
               <img
-                src="/profile.jpeg"
+                src="/images/profile.jpeg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />

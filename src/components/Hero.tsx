@@ -48,7 +48,7 @@ const Hero = () => {
       >
         <div className="absolute inset-0 bg-black/60 z-10" /> {/* Darker overlay for better text visibility */}
         <img
-          src="/Wallapage.png"
+          src="/images/Wallapage.png"
           alt="Background"
           className="w-full h-full object-cover"
         />
@@ -88,9 +88,9 @@ const Hero = () => {
                 sequence={[
                   'MERN Stack Developer',
                   1000,
-                  'Web Developer',
+                  'Wordpress Developer',
                   1000,
-                  'UI/UX Designer',
+                  'Mern stack Trainer',
                   1000,
                 ]}
                 wrapper="span"

@@ -66,7 +66,7 @@ const Hero = () => {
             className="mb-8"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-              Hi, I'm{' '}
+              Hi, I&apos;m{' '}
               <span className="text-gradient inline-block relative">
                 Maheen Kehkasha
                 <motion.span
@@ -107,7 +107,7 @@ const Hero = () => {
           >
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               I create beautiful and functional web applications with modern technologies.
-              Let's build something amazing together!
+              Let&apos;s build something amazing together!
             </p>
           </motion.div>
 

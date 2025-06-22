@@ -66,7 +66,7 @@ const Contact = () => {
     };
 
     testEmailConfig();
-  }, []);
+  }, [emailConfig.publicKey, emailConfig.serviceId, emailConfig.templateId]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -139,13 +139,13 @@ const Contact = () => {
       console.log('Email sent successfully:', result);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error sending email:', error);
       setSubmitStatus('error');
       
       // Provide more detailed error messages
-      if (error.text) {
-        switch (error.text) {
+      if (error && typeof error === 'object' && 'text' in error) {
+        switch ((error as { text: string }).text) {
           case 'Invalid template ID':
             setErrorMessage('Email template is not properly configured. Please contact the administrator.');
             break;
@@ -196,7 +196,7 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="section-header">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Get in Touch</h2>
-          <p className="text-muted text-lg">Let's discuss your next project</p>
+          <p className="text-muted text-lg">Let&apos;s discuss your next project</p>
         </div>
 
         {!isConfigValid && (

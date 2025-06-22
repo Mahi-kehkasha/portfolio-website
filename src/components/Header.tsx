@@ -117,7 +117,7 @@ const Header = () => {
             
             {/* Download Resume Button */}
             <motion.a
-              href="/Maheen-Kehkasha.pdf"
+              href="/Maheen-Kehkasha-.pdf"
               download
               className="btn btn-primary group flex items-center space-x-2 px-4 py-2 rounded-lg text-base lg:text-lg font-semibold"
               whileHover={{ scale: 1.05 }}
@@ -207,7 +207,7 @@ const Header = () => {
 
                 {/* Download Resume Button in Mobile Menu */}
                 <motion.a
-                  href="/Maheen-Kehkasha.pdf"
+                  href="/Maheen-Kehkasha-.pdf"
                   download
                   className="flex items-center space-x-2 px-4 py-3 rounded-lg text-lg font-semibold text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-all duration-300"
                   whileHover={{ x: 10 }}

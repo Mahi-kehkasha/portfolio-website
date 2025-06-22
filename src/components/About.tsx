@@ -97,7 +97,7 @@ const About = () => {
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
                 <motion.a
-                  href="/Maheen-Kehkasha.pdf"
+                  href="/Maheen-Kehkasha-.pdf"
                   download
                   className="btn btn-primary group flex items-center"
                   whileHover={{ scale: 1.05 }}
